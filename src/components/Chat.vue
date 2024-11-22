@@ -16,11 +16,10 @@ async function handleSendMessage(msg: string) {
     
     messages.value.push(response_msg);
 }
-
 </script>
 
 <template>
-    <div class="chat">
+    <div class="chat-container">
         <div class="messages">
             <div v-for="(message, index) in messages" :key="index" class="message" :class="message.role">
                 {{ message.content }}
@@ -31,16 +30,14 @@ async function handleSendMessage(msg: string) {
 </template>
 
 <style>
-.chat {
-    height: 100%;
+.chat-container {
+    padding-top: 70px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
     background-color: #1e1e1e;
     color: #ffffff;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
+    padding-bottom: 70px; /* Space for the input bar */
 }
 
 .messages {
@@ -48,9 +45,9 @@ async function handleSendMessage(msg: string) {
     width: 100%;
     overflow-y: auto;
     padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    background-color: #2e2e2e;
+    gap: 10px;
+    overflow: auto;
+    padding-bottom: 10%;
 }
 
 .message {
@@ -68,65 +65,14 @@ async function handleSendMessage(msg: string) {
     align-self: flex-end;
     background-color: #007bff;
     color: white;
+    margin-left: auto;
+    width: fit-content;
+    text-align: right;
 }
 
 .message.assistant {
     align-self: flex-start;
     background-color: #4e4e4e;
-}
-
-.input-bar {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    background-color: #1e1e1e;
-    border-top: 1px solid #333;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-}
-
-.input {
-    font-size: 1.4rem;
-    width: 70%;
-    height: 40px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 20px;
-    margin-right: 10px;
-    background-color: #2e2e2e;
-    color: #fff;
-    outline: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.input::placeholder {
-    color: #aaa;
-}
-
-.send-button {
-    font-size: 1.3rem;
-    height: 40px;
-    width: 40px;
-    border: none;
-    border-radius: 50%;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.3s ease;
-}
-
-.send-button:hover {
-    background-color: #0056b3;
-}
-
-.send-button svg {
-    fill: white;
+    margin-right: auto;
 }
 </style>

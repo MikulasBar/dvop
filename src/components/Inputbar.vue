@@ -33,6 +33,9 @@ function sendMessage() {
     padding: 10px;
     background-color: #1e1e1e;
     border-top: 1px solid #333;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 
 .input {
