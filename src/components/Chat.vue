@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import InputBar from './InputBar.vue';
+import InputBar from './Inputbar.vue';
 import { sendMsg, Message } from '../groq-api';
+import { renderMdHtml } from '../md_latex';
+
 
 const messages = ref<Message[]>([]);
 
@@ -21,8 +23,12 @@ async function handleSendMessage(msg: string) {
 <template>
     <div class="chat-container">
         <div class="messages">
-            <div v-for="(message, index) in messages" :key="index" class="message" :class="message.role">
-                {{ message.content }}
+            <div 
+                v-for="(message, index) in messages"
+                :key="index"
+                class="message"
+                :class="message.role"
+                v-html="renderMdHtml(message.content)">
             </div>
         </div>
         <InputBar @sendMessage="handleSendMessage" />

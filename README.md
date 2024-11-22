@@ -12,7 +12,7 @@ So it's chatbot that can assist with mathematics.
 - [GroqCloud (llama3-8b-8192 - free plan)](https://console.groq.com/docs/overview)
 - [Vue.js](https://vuejs.org/guide/introduction.html)
 - [groq-sdk](https://www.npmjs.com/package/groq-sdk)
-- [markdown-it](https://www.npmjs.com/package/markdown-it-katex) + [katex-plugin](https://www.npmjs.com/package/markdown-it-katex)
+- [markdown-it](https://www.npmjs.com/package/markdown-it-katex) + [katex-plugin](https://www.npmjs.com/package/@iktakahiro/markdown-it-katex)
 - [katex](https://www.npmjs.com/package/katex)
 
 
