@@ -1,14 +1,9 @@
 <script setup lang="ts">
-import { sendMsg } from './groq-api';
-
-const msg = 'What is Taylor series?';
-const completion = await sendMsg(msg);
-
-console.log(completion);
+import Chat from './components/Chat.vue';
 </script>
 
 <template>
-  <p>Place holder</p>
+  <Chat />
 </template>
 
 <style scoped>

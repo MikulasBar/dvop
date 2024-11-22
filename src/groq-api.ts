@@ -14,11 +14,13 @@ export interface Completion {
 
 interface Choice {
     index: number;
-    message: {
-        role: string;
-        content: string;
-    };
     finish_reason: string;
+    message: Message;
+}
+
+export interface Message {
+    role: string;
+    content: string;
 }
 
 
