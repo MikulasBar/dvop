@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 import InputBar from './Inputbar.vue';
 import { sendMsg, Message } from '../groq-api';
-import { renderMdHtml } from '../md_latex';
+import { renderMdHtml } from '../md-latex';
 
 
 const messages = ref<Message[]>([]);

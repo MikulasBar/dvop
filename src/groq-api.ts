@@ -6,7 +6,7 @@ const client = new Groq({
 });
 
 const model = 'llama3-8b-8192';
-const system_msg = "You can only provide info about math. If the topic is different, respond: 'Sorry but I can only provide info about math.'. If the user asks for math expression use latex in markdown"
+const system_msg = "You can only provide info about math. If the topic is different, respond: 'Sorry but I can only provide info about math.'. Only use markdown and latex."
 
 export interface Completion {
     choices: Choice[];
