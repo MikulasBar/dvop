@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch, watchEffect } from 'vue';
 import InputBar from './Inputbar.vue';
 import { sendMsg, Message } from '../groq-api';
 import { renderMdHtml } from '../md-latex';
 
 
 const messages = ref<Message[]>([]);
+const lastMsgRef = ref<HTMLElement | null>(null);
 
 async function handleSendMessage(msg: string) {
     messages.value.push({
@@ -18,6 +19,14 @@ async function handleSendMessage(msg: string) {
     
     messages.value.push(response_msg);
 }
+
+watchEffect(() => {
+    console.log(`messages updated ${lastMsgRef.value}`);
+    if (lastMsgRef.value !== null && lastMsgRef.value !== undefined) {
+        console.log('scrolling to last message');
+        lastMsgRef.value!.scrollIntoView();
+    }
+});
 </script>
 
 <template>
@@ -28,7 +37,8 @@ async function handleSendMessage(msg: string) {
                 :key="index"
                 class="message"
                 :class="message.role"
-                v-html="renderMdHtml(message.content)">
+                v-html="renderMdHtml(message.content)"
+                :ref="index == messages.length - 1 ? 'lastMsgRef' : undefined">
             </div>
         </div>
         <InputBar @sendMessage="handleSendMessage" />
